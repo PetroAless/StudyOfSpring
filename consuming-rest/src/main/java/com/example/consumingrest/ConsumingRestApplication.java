@@ -22,8 +22,9 @@ public class ConsumingRestApplication {
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception{
 		return args -> {
-			Quote quote = restTemplate.getForObject("http://localhost:8080/api/random",Quote.class);
-			log.info(quote.toString());
+			Profiles profiles = restTemplate.getForObject("https://gorest.co.in/public/v2/users?profile=p1,p2,p3,p4" +
+					",p5,p6,p7,p8,p9,p10",Profiles.class);
+			log.info(profiles.toString());
 		};
 	}
 }
